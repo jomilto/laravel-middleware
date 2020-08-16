@@ -30,6 +30,9 @@ Route::resource('pages','PageController');
 
 Route::post('post','PostController@store')->name('post.store');
 
-Route::get('home', function () {
-    return view('home');
+Route::get('home2', function () {
+    return view('home2');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
