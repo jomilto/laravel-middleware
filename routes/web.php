@@ -29,3 +29,7 @@ Route::resource('pages','PageController');
 // crea controlador con las rutas, y el modelo
 
 Route::post('post','PostController@store')->name('post.store');
+
+Route::get('home', function () {
+    return view('home');
+});
