@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('post');
 })
 // ->middleware('auth')
 ;
@@ -28,3 +28,4 @@ Route::resource('pages','PageController');
 // php artisan make:controller PageController --resource --model=Page
 // crea controlador con las rutas, y el modelo
 
+Route::post('post','PostController@store')->name('post.store');
