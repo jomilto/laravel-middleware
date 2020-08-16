@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+use App\Post;
+use App\User;
+
 Route::get('/', function () {
     return view('post');
 })
@@ -36,3 +39,45 @@ Route::get('home2', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('eloquent', function () {
+    $posts = Post::all();
+    foreach ($posts as $post)
+    {
+        echo "$post->id $post->title <br>";
+    }
+});
+
+Route::get('post', function () {
+    $posts = Post::all();
+    foreach ($posts as $post)
+    {
+        echo "
+        $post->id
+        <strong>{$post->user->name}</strong>
+        $post->title <br>";
+    }
+});
+
+Route::get('users', function () {
+    $users = User::all();
+    foreach ($users as $user)
+    {
+        echo "
+        $user->id
+        <strong>{$user->name}</strong>
+        {$user->posts->count()} posts<br>";
+    }
+});
+
+Route::get('collections', function () {
+    $users = User::all();
+    dd($users->load('posts'));
+});
+
+Route::get('serialization', function () {
+    $users = User::all();
+    // dd($users->toArray());
+    dd($users->toJson());
+});
