@@ -14,7 +14,7 @@ class Post extends Model
 
     public function getGetTitleAttribute()
     {
-        return strtoupper($this->title);
+        return ucfirst($this->title);
     }
 
     public function setTitleAttribute($value)
