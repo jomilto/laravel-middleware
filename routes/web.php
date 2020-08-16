@@ -15,4 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})
+// ->middleware('auth')
+;
+
+Route::view('vista','welcome',['app'=>'hola']);
+
+Route::resource('users','UserController')->middleware('auth');
+
+Route::resource('pages','PageController'); 
+//se crean 7 rutas de CRUD con:
+// php artisan make:controller PageController --resource --model=Page
+// crea controlador con las rutas, y el modelo
+
