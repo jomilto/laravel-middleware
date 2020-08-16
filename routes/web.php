@@ -55,8 +55,8 @@ Route::get('post', function () {
     {
         echo "
         $post->id
-        <strong>{$post->user->name}</strong>
-        $post->title <br>";
+        <strong>{$post->user->get_name}</strong>
+        $post->get_title <br>";
     }
 });
 
@@ -66,7 +66,7 @@ Route::get('users', function () {
     {
         echo "
         $user->id
-        <strong>{$user->name}</strong>
+        <strong>{$user->get_name}</strong>
         {$user->posts->count()} posts<br>";
     }
 });
